@@ -14,6 +14,25 @@ bool isChar(const std::string& str){
 	return false;;
 }
 
+bool isInt(const std::string& str){
+	size_t i = 0;
+
+	if(str[i] == '+' || str[i] == '-')
+		i++;
+	while((i < str.size()) && std::isdigit(str[i]))
+		i++;
+	if(i != str.size())
+		return false;
+	try
+	{
+		std::stoi(str);
+	}
+	catch(...){
+		return false;
+	}
+	return true;
+}
+
 
 
 int	getType(const std::string& str){
