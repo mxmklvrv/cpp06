@@ -75,6 +75,13 @@ bool isDouble(const std::string& str){
 	}
 }
 
+bool isPsuedoFloat(const std::string& str){
+	return (str == "-inff" || str == "inff" || str == "nanf");
+}
+
+bool isPsuedoDouble(const std::string& str){
+	return (str == "-inf" || str == "inf" || str == "nan");
+}
 
 
 int	getType(const std::string& str){
