@@ -54,6 +54,27 @@ bool isFlaot(const std::string& str){
 	return true;
 }
 
+bool isDouble(const std::string& str){
+	size_t i = 0;
+	int dot = 0;
+
+	if(str[i] == '+' || str[i] == '-')
+		i++;
+	while(i < str.size() && (std::isdigit(str[i]) || str[i] == '.')){
+		if(str[i] == '.')
+			dot++;
+		i++;
+	}
+	if(dot != 1 || i != str.size())
+		return false;
+	try{
+		std::stod(str);
+	}
+	catch(...){
+		return false;
+	}
+}
+
 
 
 int	getType(const std::string& str){
