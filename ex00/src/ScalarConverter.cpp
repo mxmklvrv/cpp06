@@ -23,9 +23,30 @@ bool isInt(const std::string& str){
 		i++;
 	if(i != str.size())
 		return false;
-	try
-	{
+	try{
 		std::stoi(str);
+	}
+	catch(...){
+		return false;
+	}
+	return true;
+}
+
+bool isFlaot(const std::string& str){
+	size_t i = 0;
+	int dot = 0;
+
+	if(str[i] == '+' || str[i] == '-')
+		i++;
+	while(i < str.size() && (std::isdigit(str[i]) || str[i] == '.')){
+		if(str[i] == '.')
+			dot++;
+		i++;
+	}
+	if(dot != 1 || i != str.size() - 1 || str[i] != 'f')
+		return false;
+	try{
+		std::stof(str);
 	}
 	catch(...){
 		return false;
