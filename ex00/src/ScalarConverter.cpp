@@ -73,6 +73,7 @@ bool isDouble(const std::string& str){
 	catch(...){
 		return false;
 	}
+	return true;
 }
 
 bool isPsuedoFloat(const std::string& str){
@@ -81,6 +82,19 @@ bool isPsuedoFloat(const std::string& str){
 
 bool isPsuedoDouble(const std::string& str){
 	return (str == "-inf" || str == "inf" || str == "nan");
+}
+
+int afterDotDigits(const std::string& str){
+	size_t dot = str.find('.');
+	if(dot == std::string::npos)
+		return 1;
+	size_t i = dot + 1;
+	int res = 0;
+	while(i < str.size() && std::isdigit(str[i])){
+		i++;
+		res++;
+	}
+	return res == 0 ? 1 : res;
 }
 
 
@@ -108,6 +122,6 @@ void ScalarConverter::convert(const std::string& str){
 	}
 
 	int inputType = getType(str);
-
+	int precision = afterDotDigits(str);
 
 }
