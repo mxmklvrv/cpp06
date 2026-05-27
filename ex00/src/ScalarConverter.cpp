@@ -114,6 +114,17 @@ int	getType(const std::string& str){
 	return 69;
 }
 
+void printChar(const std::string& str){
+	char c = str[0];
+	if(std::isprint(c))
+		std::cout << "char: " << "'" << c << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
+}
+
 
 void ScalarConverter::convert(const std::string& str){
 	if(str.empty()){
@@ -123,5 +134,15 @@ void ScalarConverter::convert(const std::string& str){
 
 	int inputType = getType(str);
 	int precision = afterDotDigits(str);
+
+	switch (inputType)
+	{
+	case 0:
+		printChar(str);
+		break;
+
+	default:
+		break;
+	}
 
 }
