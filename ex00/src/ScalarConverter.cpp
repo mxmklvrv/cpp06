@@ -125,6 +125,7 @@ void printChar(const std::string& str){
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
