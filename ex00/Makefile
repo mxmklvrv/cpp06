@@ -7,9 +7,9 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 INCLUDES = -I ./inc
-HEADERS = inc/
+HEADERS = inc/ScalarConverter.hpp
 
-SRCS = src/main.cpp src/
+SRCS = src/main.cpp src/ScalarConverter.cpp
 OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 .SECONDARY: $(OBJS)
 

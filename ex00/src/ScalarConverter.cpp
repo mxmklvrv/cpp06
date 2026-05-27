@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <cmath>
+#include <iomanip>
 
 
 void printAllImpossible(){
@@ -150,6 +151,50 @@ void toChar(const std::string& str){
 
 }
 
+void toInt(const std::string& str){
+	double temp;
+
+	try{
+		temp = std::stod(str);
+	}
+	catch(...){
+		std::cout << "int: impossible" << std::endl;
+		return;
+	}
+	if(std::isnan(temp) || std::isinf(temp)){
+		std::cout << "int: impossible" << std::endl;
+		return;
+	}
+	if(temp > std::numeric_limits<int>::max() || temp < std::numeric_limits<int>::min()){
+		std::cout << "int: impossible" << std::endl;
+		return;
+	}
+	std::cout << "int: " << static_cast<int>(temp) << std::endl;
+}
+
+void toFloat(const std::string& str, int precision){
+	std::cout << "float: ";
+	try
+	{
+		float temp = stof(str);
+		std::cout << std::fixed << std::setprecision(precision);
+		std::cout << temp << "f" << std::endl;
+	}
+	catch(...){
+		std::cout << "impossible" << std::endl;
+	}
+}
+
+void toDouble(const std::string& str, int precision){
+	std::cout << "double: ";
+	try{
+		double temp = stod(str);
+		std::cout << std::fixed << std::setprecision(precision) << temp << std::endl;
+	}
+	catch(...){
+		std::cout << "impossible" << std::endl;
+	}
+}
 
 
 void ScalarConverter::convert(const std::string& str){
@@ -185,8 +230,22 @@ void ScalarConverter::convert(const std::string& str){
 		toFloat(str, precision);
 		toDouble(str, precision);
 		break;
-
-
+	case 4:
+		toChar(str);
+		toInt(str);
+		toFloat(str, precision);
+		toDouble(str, precision);
+		break;
+	case 5:
+		toChar(str);
+		toInt(str);
+		toFloat(str, precision);
+		toDouble(str, precision);
+		break;
+	case 69:
+		printAllImpossible();
+		break;
+	default:
+		std::cout << "Sys error" << std::endl;
 	}
-
 }
