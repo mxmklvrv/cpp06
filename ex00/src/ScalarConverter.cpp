@@ -1,5 +1,8 @@
 #include  "ScalarConverter.hpp"
 #include <iostream>
+#include <limits>
+#include <cmath>
+
 
 void printAllImpossible(){
 	std::cout << "char: impossible" << std::endl;
@@ -125,6 +128,29 @@ void printChar(const std::string& str){
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
+void toChar(const std::string& str){
+	double temp;
+
+	try{
+		temp = std::stod(str);
+	}
+	catch(...){
+		std::cout << "char: impossible" << std::endl;
+		return;
+	}
+	if(std::isnan(temp) || std::isinf(temp) || temp < 0.0 || temp > 127.0){
+		std::cout << "char: impossible" << std::endl;
+		return;
+	}
+	if(temp < 32.0 || temp == 127.0){
+		std::cout << "char: Non displayable" << std::endl;
+		return;
+	}
+	std::cout << "char: " << "'" << static_cast<char>(temp) << "'" << std::endl;
+
+}
+
+
 
 void ScalarConverter::convert(const std::string& str){
 	if(str.empty()){
@@ -141,8 +167,26 @@ void ScalarConverter::convert(const std::string& str){
 		printChar(str);
 		break;
 
-	default:
+	case 1:
+		toChar(str);
+		toInt(str);
+		toFloat(str, precision);
+		toDouble(str, precision);
 		break;
+	case 2:
+		toChar(str);
+		toInt(str);
+		toFloat(str, precision);
+		toDouble(str, precision);
+		break;
+	case 3:
+		toChar(str);
+		toInt(str);
+		toFloat(str, precision);
+		toDouble(str, precision);
+		break;
+
+
 	}
 
 }
