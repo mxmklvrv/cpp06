@@ -1,4 +1,4 @@
-NAME =
+NAME = Serializer
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++20
@@ -7,9 +7,9 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 INCLUDES = -I ./inc
-HEADERS = inc/
+HEADERS = inc/Data.hpp inc/Serializer.hpp
 
-SRCS = src/main.cpp src/
+SRCS = src/main.cpp src/Serializer.cpp
 OBJS = $(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 .SECONDARY: $(OBJS)
 

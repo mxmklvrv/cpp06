@@ -1,4 +1,5 @@
 #include "Serializer.hpp"
+#include "Data.hpp"
 #include <iostream>
 
 int main(){
@@ -18,6 +19,6 @@ int main(){
 
     std::cout << restored->street_name << std::endl;
     std::cout << restored->apartment_num << std::endl;
-    
-    
+
+
 }

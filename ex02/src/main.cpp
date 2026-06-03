@@ -13,12 +13,15 @@ Base* generate(void){
     switch (std::rand() % 3)
     {
     case 0:
+		std::cout << "Generate created A" << std::endl;
         return new A();
         break;
     case 1:
+		std::cout << "Generate created B" << std::endl;
         return new B();
         break;
     default:
+		std::cout << "Generate created C" << std::endl;
         return new C();
         break;
     }
@@ -41,7 +44,7 @@ void identify(Base* p){
 
 // what derived type is behind base ref
 // param is ref
-// if fails, throws 
+// if fails, throws
 // ref cannot be null
 //
 void identify(Base& p){
@@ -75,6 +78,7 @@ int main(){
 std::srand(std::time(0));
 
 Base* obj = generate();
+std::cout << std::endl;
 
 std::cout << "Pointer check: ";
 identify(obj);
